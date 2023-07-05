@@ -7,27 +7,63 @@ namespace Shopping_Kata
 {
     public class shoppingCart
     {
-        Dictionary<string, Item> scannedItems = new Dictionary<string, Item>(); 
-
-        public void addItemToCart(Item item, string name) 
+        Dictionary<string, Item> definedItems = new Dictionary<string, Item>(); 
+        List<string> scannedItems = new List<string>();
+        public void addItemDefinition(Item item, string name) 
         {
-            scannedItems.Add(name, item);
+            definedItems.Add(name, item);
         }
 
-        public void addItemsToCart(Item[] itemArray)
+        public void addMultipleItemsDefinitions(Item[] itemArray)
         {
             foreach (Item item in itemArray)
             {
-                scannedItems.Add(item.Name, item);
+                definedItems.Add(item.Name, item);
             }
         }
 
-        public Item? checkForScannedItem(string itemName)
+        public Item? checkItemIsValid(string itemName)
         {
             Item? result = null;
-            this.scannedItems.TryGetValue(itemName, out result);
+            this.definedItems.TryGetValue(itemName, out result);
 
             return result;
+        }
+
+        public void scannedItem (string itemName)
+        {
+            this.scannedItems.Add(itemName);
+        }
+
+        public int calculateTotal()
+        {
+            int total = 0;
+            foreach (string item in this.scannedItems)
+            {
+                Item? result = this.checkItemIsValid(item);
+
+                if (result != null)
+                {
+                    total += result.Price;
+                }
+            }
+            return total;
+        }
+
+        public string getReceipt()
+        {
+            string receipt = "";
+            foreach (string item in this.scannedItems)
+            {
+                Item? result = this.checkItemIsValid(item);
+
+                if (result != null)
+                {   
+                    receipt += result.Name + " " + result.Price + "\n";
+                }
+            }
+            receipt += "Total: " + this.calculateTotal();
+            return receipt;
         }
     }
 

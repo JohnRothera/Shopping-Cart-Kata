@@ -19,22 +19,29 @@ class Program
 
         var shopCart = new shoppingCart();
 
-        shopCart.addItemsToCart(definedItems);
+        shopCart.addMultipleItemsDefinitions(definedItems);
+        /* */
 
-        // PROGRAM
-        // Item? result = null;
-        Item? result = shopCart.checkForScannedItem("A");
-
-        if (result != null)
+        
+        List<string> scannedItems = new List<string>()
         {
-            Console.WriteLine("Item {0} Item Value {1}", result.Name, result.Price);
-        }
-        else
+            "A",
+            "A",
+            "A",
+            "B",
+            "B",
+            "C",
+            "D",
+            "E"
+        };
+
+        foreach (string item in scannedItems)
         {
-            Console.WriteLine("This did not work!");
+            shopCart.scannedItem(item);
         }
 
-        Console.ReadKey();
+        System.Console.WriteLine(shopCart.getReceipt());
+
     }
  
 }
