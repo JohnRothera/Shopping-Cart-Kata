@@ -67,7 +67,4 @@ namespace Shopping_Kata
         }
     }
 
-   
-
-
 }

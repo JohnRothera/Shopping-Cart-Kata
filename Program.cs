@@ -42,6 +42,10 @@ class Program
 
         System.Console.WriteLine(shopCart.getReceipt());
 
+        Discounts buyOneGetOneDiscount = new Discounts("buyOneGetOne");
+        Console.WriteLine(buyOneGetOneDiscount.OfferMultiplier);
+
+        
     }
  
 }
