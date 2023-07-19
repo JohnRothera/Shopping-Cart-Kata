@@ -9,6 +9,8 @@ namespace Shopping_Kata
 	{
 		public string Name { get; set; }
 		public int Price { get; set; }
+		public Discounts? DiscountOffer { get; set; }
+
 
 		public Item(string name, int price)
 		{

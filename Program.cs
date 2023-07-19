@@ -32,6 +32,7 @@ class Program
             "B",
             "C",
             "D",
+            "E",
             "E"
         };
 
@@ -39,6 +40,10 @@ class Program
         {
             shopCart.scannedItem(item);
         }
+        
+        shopCart.ApplyDiscount(new Discounts("buyOneGetOne"));
+        shopCart.ApplyDiscount(new Discounts("buyTwoGet15PercentOff"));
+        shopCart.ApplyDiscount(new Discounts("buyThreeGet20PercentOff")); 
 
         System.Console.WriteLine(shopCart.getReceipt());
 

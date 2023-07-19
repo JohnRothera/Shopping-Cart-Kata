@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Shopping_Kata
 {
-    class Discounts
+    public class Discounts
     {
         public string OfferName { get; set; }
         public int QualifyingItemCount { get; set; }
