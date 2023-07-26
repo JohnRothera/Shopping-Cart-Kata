@@ -17,7 +17,7 @@ namespace Shopping_Kata
                 case "buyOneGetOne":
                     this.OfferName = offerName;
                     this.QualifyingItemCount = 2;
-                    this.OfferMultiplier = 1;
+                    this.OfferMultiplier = 0.5;
                     break;
                 case "buyTwoGet15PercentOff":
                     this.OfferName = offerName;
@@ -30,13 +30,8 @@ namespace Shopping_Kata
                     this.OfferMultiplier = 0.20;
                     break;
                 default:
-                    throw new Exception("Invalid Item");
+                    throw new Exception("Offer does not exist");
             }
-        }
-        public double CalculateDiscount(int totalItemsPrice, int itemCount)
-        {
-            double qualifyingOfferCount = Math.Floor((double)itemCount / (double)this.QualifyingItemCount);
-            return totalItemsPrice - (totalItemsPrice * (this.OfferMultiplier * qualifyingOfferCount));
         }
     }
 }
